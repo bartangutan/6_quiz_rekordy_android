@@ -42,10 +42,6 @@ public class MainActivity extends AppCompatActivity {
         textViewWynik = findViewById(R.id.textViewWynik);
         textViewPorownanyWynik = findViewById(R.id.textViewPorownanyWynik);
 
-        radioGroup = findViewById(R.id.radioGroup1);
-        radioButton1 = findViewById(R.id.radioButton1);
-        radioButton2 = findViewById(R.id.radioButton2);
-        radioButton3 = findViewById(R.id.radioButton3);
 
         editTextText = findViewById(R.id.editTextText);
         buttonPorownaj = findViewById(R.id.buttonPorownaj);
