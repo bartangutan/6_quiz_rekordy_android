@@ -111,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void wypiszRekord(int numerRekordu){
-        textViewDziedzina.setText(rekordyZInternetu.get(numerRekordu).getDziedzina());
-        textViewRekordzista.setText(rekordyZInternetu.get(numerRekordu).getRekordzista());
-        textViewRok.setText(rekordyZInternetu.get(numerRekordu).getRok());
+        textViewDziedzina.setText("Dziedzina: "+rekordyZInternetu.get(numerRekordu).getDziedzina());
+        textViewRekordzista.setText("Rekordzista: "+rekordyZInternetu.get(numerRekordu).getRekordzista());
+        textViewRok.setText("Rok ustanowienia: "+rekordyZInternetu.get(numerRekordu).getRok());
         textViewWynik.setText(rekordyZInternetu.get(numerRekordu).getRekordowy_wynik());
     }
 
