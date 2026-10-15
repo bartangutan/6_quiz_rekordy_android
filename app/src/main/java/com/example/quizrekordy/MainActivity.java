@@ -1,6 +1,7 @@
 package com.example.quizrekordy;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton1, radioButton2, radioButton3;
     EditText editTextText;
-    Button buttonPorownaj;
+    Button buttonPorownaj, buttonNastepny;
     List<Rekord> rekordyZInternetu;
+    int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
         editTextText = findViewById(R.id.editTextText);
         buttonPorownaj = findViewById(R.id.buttonPorownaj);
+        buttonNastepny = findViewById(R.id.buttonNastepny);
+
 
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             return;
                         }
                         rekordyZInternetu = response.body();
-                        wypiszRekord(0);
+                        wypiszRekord(index);
                     }
 
                     @Override
@@ -72,6 +76,33 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        buttonNastepny.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        index++;
+                        if(index == rekordyZInternetu.size()){
+                            index=0;
+                        }
+                        wypiszRekord(index);
+                    }
+                }
+        );
+
+        buttonPorownaj.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String twojWynik = editTextText.getText().toString();
+                        double rekord = Double.parseDouble(textViewWynik.getText().toString());
+
+                        textViewPorownanyWynik.setText("");
+                    }
+                }
+        );
+
+
     }
 
     private void wypiszRekord(int numerRekordu){
