@@ -95,9 +95,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         String twojWynik = editTextText.getText().toString();
+                        double twojWynikDouble = Double.parseDouble(twojWynik);
                         double rekord = Double.parseDouble(textViewWynik.getText().toString());
 
-                        textViewPorownanyWynik.setText("");
+                        double brakujeCiZaokraglone = zaokraglij (((rekord-twojWynikDouble) * (-1)));
+                        double procentyZaokraglone = zaokraglij (rekord/twojWynikDouble*100);
+
+
+                        textViewPorownanyWynik.setText("Twój wynik: "+ twojWynikDouble + "\nRekordowy wynik: "+rekord+"\nBrakuje ci: "+brakujeCiZaokraglone+"\n"+ procentyZaokraglone + "% rekordu");
                     }
                 }
         );
@@ -110,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
         textViewRekordzista.setText(rekordyZInternetu.get(numerRekordu).getRekordzista());
         textViewRok.setText(rekordyZInternetu.get(numerRekordu).getRok());
         textViewWynik.setText(rekordyZInternetu.get(numerRekordu).getRekordowy_wynik());
+    }
+
+    private double zaokraglij(double liczbaDoZaokraglenia){
+        liczbaDoZaokraglenia*=100;
+        liczbaDoZaokraglenia = Math.round(liczbaDoZaokraglenia);
+        liczbaDoZaokraglenia = liczbaDoZaokraglenia/100;
+        return liczbaDoZaokraglenia;
     }
 
 }
